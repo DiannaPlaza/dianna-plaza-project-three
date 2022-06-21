@@ -6,30 +6,24 @@ const DisplayQuotes = (props) => {
         <section>
             {
                 props.quotes.length === 0 ? (
-                    <p>Please selecet an option to view Quotes !</p>
+                    <h3>Please selecet an option to view Quotes !</h3>
                     ):(
-                        <>
-                        
-                        <p>Here are some quotes:</p>
+                    <>
                         <ul className="resultsContainer">
-                        {
-                            props.quotes.map( (quote) => {
-                                return(
-                                <li 
-                                className="quotes" 
-                                key={quote._id}>
-                                    "{quote.content}"
-                                    - {quote.author}
-
-                                </li>
-
-                                )
-
-
-                            })
-                        }
+                            {
+                                props.quotes.map( (quote) => {
+                                    return(
+                                        <li 
+                                            className="quotes" 
+                                            key={quote._id}>
+                                            "{quote.content}"
+                                            - {quote.author}
+                                        </li>
+                                    )
+                                })
+                            }
                     
-                    </ul>
+                        </ul>
                     </>
                     
 

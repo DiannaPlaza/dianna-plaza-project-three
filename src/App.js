@@ -33,6 +33,7 @@ function App() {
         },
    
        }).then ( (apiData) =>{
+        console.log(apiData.data.results);
    
        setQuoteTag(apiData.data.results);
    
@@ -55,11 +56,13 @@ function App() {
     }
 
   return (
-    <div className='App'>      
+    <div className='App'>
+      <div className='wrapper'>
       <Header />
       <Form handleSubmit={userSelection}/>
       <DisplayQuotes quotes={quoteTag} />
       <Footer />
+      </div>     
     </div>
   );
 }

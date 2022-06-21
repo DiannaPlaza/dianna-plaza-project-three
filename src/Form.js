@@ -5,43 +5,39 @@ import { useState } from 'react';
 
 
 const Form = ( props ) => {
-    const [userSelectedValue, setUserSelectedValue] = useState('placeholder')
-
-    console.log(props);
+    const [userSelectedValue, setUserSelectedValue] = useState('')
 
     const handleChange = (event) => {
-        // log out the value of the user's selected option
-        console.log(event.target.value);
 
         setUserSelectedValue(event.target.value);
     }
 
     return (
-        <div className="wrapper">
+        <div className='wrapper'>
         <form 
-            action=""
+            action=''
             onSubmit={  (event) => {
                 props.handleSubmit(event, userSelectedValue) 
             } }
             >
-            <label htmlFor="quoteOptions"></label>
+            <label htmlFor='quoteOptions'></label>
             <select 
-            name="" 
-            id="quoteOptions"
+            name=''
+            id='quoteOptions'
             onChange={ handleChange }
             value={ userSelectedValue }
             >
-                <option value="placeholder" disabled>Select an option</option>
-                <option value="inspirational">Inspirational</option>
-                <option value="wisdom">Wisdom</option>
-                <option value="life">Life</option>
-                <option value="happiness">Happiness</option>
-                <option value="love">Love</option>
-                <option value="future">Future</option>
-                <option value="famous-quotes">Famous-Quotes</option>
-                <option value="success">Sucess</option>
-                <option value="friendship">Friendship</option>
-                <option value="faith">Faith</option>
+                <option value=''  disabled>Select an option</option>
+                <option value='inspirational'>Inspirational</option>
+                <option value='wisdom'>Wisdom</option>
+                <option value='life'>Life</option>
+                <option value='happiness'>Happiness</option>
+                <option value='love'>Love</option>
+                <option value='future'>Future</option>
+                <option value='famous-quotes'>Famous-Quotes</option>
+                <option value='success'>Success</option>
+                <option value='friendship'>Friendship</option>
+                <option value='faith'>Faith</option>
             </select>
             <button> Show me some quotes!</button>
         </form>
