@@ -1,3 +1,4 @@
+// *** App Component ***
 import './App.css';
 
 // import the axios package;
@@ -7,6 +8,7 @@ import {useEffect, useState} from 'react';
 import Header from './Header.js';
 import Form from './Form.js';
 import DisplayQuotes from './DisplayQuotes.js';
+import Footer from './Footer.js';
 
 
 function App() {
@@ -34,7 +36,11 @@ function App() {
    
        setQuoteTag(apiData.data.results);
    
-       } )
+       } ).catch( () => {
+
+        console.log("ERROR, Please select an option to display quotes")
+
+       })
       
     }    
 
@@ -53,30 +59,11 @@ function App() {
       <Header />
       <Form handleSubmit={userSelection}/>
       <DisplayQuotes quotes={quoteTag} />
+      <Footer />
     </div>
   );
 }
 
 export default App;
 
-// *** App Component ***
-// Create state items to hold the quote data coming from the ZenQuotes API
-// - random quotes
 
-
-// Once the component has been loaded (mounted) call the local method (getQuotes) to get a list of random quotes to start
-
-// A local method (getQutoes) to make the third-party API call to ZenQuotes
-// - when successful, update the state (quote) with new data
-
-// A local method (onClick) to handle the onClick event to update state when user submits button to get quotes.
-
-// Render the application
-// - header
-// - use the imported Result component
-// - footer
-
-// *** Result Component ***
-// Create a component to display data from the third-party API
-// This component will get data (quotes) passed in as props
-// Use .map() to render out 10 pieces of data
