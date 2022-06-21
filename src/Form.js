@@ -1,9 +1,8 @@
-import { useState } from "react";
-
+import { useState } from 'react';
 
 
 const Form = ( props ) => {
-    const [selectValue, setSelectValue] = useState('placeholder')
+    const [userSelectedValue, setUserSelectedValue] = useState('placeholder')
 
     console.log(props);
     // we're tracking Two events within this component
@@ -14,13 +13,15 @@ const Form = ( props ) => {
         // log out the value of the user's selected option
         console.log(event.target.value);
 
-        setSelectValue(event.target.value);
+        setUserSelectedValue(event.target.value);
     }
 
     return (
         <form 
             action=""
-            onSubmit={ props.handleSubmit }
+            onSubmit={  (event) => {
+                props.handleSubmit(event, userSelectedValue) 
+            } }
             >
             <label htmlFor="quoteOptions"></label>
             <select 
@@ -29,15 +30,17 @@ const Form = ( props ) => {
             // when a new option is selected "AKA" a change is detected withing the select -- fire a handleChange function
             onChange={ handleChange }
             // in order to convert this element into a "controlled component", it's value needs to be dictated by rreact
-            value={ selectValue }
+            value={ userSelectedValue }
             >
                 <option value="placeholder disabled">Select an option</option>
                 <option value="inspirational">Inspirational</option>
                 <option value="wisdom">Wisdom</option>
                 <option value="life">Life</option>
                 <option value="happiness">Happiness</option>
-                <option value="success">Success</option>
+                <option value="love">Love</option>
                 <option value="future">Future</option>
+                <option value="famous-quotes">Famous-Quotes</option>
+                <option value="success">Sucess</option>
             </select>
             <button> Show me some quotes!</button>
         </form>

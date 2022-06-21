@@ -6,54 +6,53 @@ import axios from 'axios';
 import {useEffect, useState} from 'react';
 import Header from './Header.js';
 import Form from './Form.js';
+import DisplayQuotes from './DisplayQuotes.js';
 
 
 function App() {
-  console.log('App has re-rendered')
+
   // call the useState Hook to hold the array of quotes from the quoteable API
-  // the API resturns an array of objects, therefore we'll intialize state as an empty array
   const [quoteTag, setQuoteTag] = useState([]);
 
+  // another useState Hook to hold the user's selected query choice value
+  const [ queryChoice, setQueryChoice] = useState('');
+
   useEffect( () =>{
-     // make the axios call within a useEffect
+    if (queryChoice){
 
-    axios({
+      axios({
 
-     baseURL:'https://api.quotable.io/',
-     url: 'search/quotes',
-     method: "GET",
-     params:  {
-      fields: 'tags',
-      // need to update the fields property based on the user's selctions
-      query: 'inspirational'
-     },
+        baseURL:'https://api.quotable.io/',
+        url: 'search/quotes',
+        method: 'GET',
+        params:  {
+         fields: 'tags',
+         query: queryChoice,
+        },
+   
+       }).then ( (apiData) =>{
+   
+       setQuoteTag(apiData.data.results);
+   
+       } )
+      
+    }    
 
-    }).then ( (apiData) =>{
+  }, [queryChoice] )
 
-      // traverse through the response object to get to the array of puppy pics
-    console.log(apiData.data.results)
+    const userSelection = function(event, tagValue) {
 
-    // take the data that is returned from the API and store it within state
-    setQuoteTag(apiData.data.results);
-
-    })
-
-  }, [] )
-  // define a function which will be passed as props to Form
-    // when this function is called -- by Form - it wil update a piece of state
-
-    const userSelection = function(event) {
-
-      // this function is called when the form is submitted, so it needs to tell the form NOT to refresh the page
       event.preventDefault ();
 
-      console.log("chosen selection!")
+      setQueryChoice(tagValue)
+
     }
 
   return (
-    <div className="App">      
+    <div className='App'>      
       <Header />
       <Form handleSubmit={userSelection}/>
+      <DisplayQuotes quotes={quoteTag} />
     </div>
   );
 }
