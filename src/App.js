@@ -33,7 +33,6 @@ function App() {
         },
    
        }).then ( (apiData) =>{
-        console.log(apiData.data.results);
    
        setQuoteTag(apiData.data.results);
    

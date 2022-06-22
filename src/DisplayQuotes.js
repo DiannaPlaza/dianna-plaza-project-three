@@ -6,7 +6,7 @@ const DisplayQuotes = (props) => {
         <section>
             {
                 props.quotes.length === 0 ? (
-                    <h3>Please selecet an option to view Quotes !</h3>
+                    <h3>Please selecet an option above to view Quotes !</h3>
                     ):(
                     <>
                         <ul className="resultsContainer">
