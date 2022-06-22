@@ -133,7 +133,7 @@ footer{
 @media(max-width: 530px){
   .resultsContainer{
     flex-direction: column;
-    justify-content: center;
+    align-self: center;
   }
 
   li{
@@ -141,6 +141,8 @@ footer{
   }
   html{
     font-size: 1rem;
+    color: black;
+
   }
 
 }
