@@ -91,6 +91,7 @@ button:hover, button:focus, select:hover, select:focus{
   display: flex;
   list-style-type: none;
   flex-wrap: wrap;
+  padding: 0;
 }
 
 li{
@@ -125,12 +126,28 @@ footer{
 }
 
 @media(max-width: 768px){
+  .resultsContainer{
+    display: flex;
+    justify-content: center;
+
+  }
+
   li{
     width: calc(100%/3);
   }
 }
 
 @media(max-width: 530px){
+  html{
+    font-size: 1rem;
+    color: black;
+    
+  }
+
+  button, select{
+    padding: 10px 40px;
+    
+  }
   .resultsContainer{
     flex-direction: column;
     align-self: center;
@@ -139,12 +156,7 @@ footer{
   li{
     width: 90%;
   }
-  html{
-    font-size: 1rem;
-    color: black;
-
-  }
-
+  
 }
 
 
